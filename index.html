@@ -4,42 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tutorial de Acesso ao Conecta</title>
+
     <style>
+        /* Animação do gradiente de fundo */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Fundo com gradiente animado */
         body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(270deg, #fd7100, #001c56, #fd7100);
+            background-size: 600% 600%;
+            animation: gradientAnimation 15s ease infinite;
             font-family: Arial, sans-serif;
-            padding: 20px;
-            background: #f4f4f4;
             color: #333;
-            line-height: 1.6;
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Container que segura o texto e vídeo */
+        .container {
+            width: 100%;
             max-width: 800px;
-            margin: auto;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 15px;
+            padding: 20px;
+            box-sizing: border-box;
+            backdrop-filter: blur(5px);
         }
 
         h1 {
             text-align: center;
+            margin-top: 0;
         }
 
+        /* Vídeo responsivo */
         video {
             width: 100%;
+            height: auto;
             border-radius: 10px;
-            background: #000;
             margin-top: 20px;
+            background: #000;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Ajustes extras para telas menores */
+        @media (max-width: 480px) {
+            p {
+                font-size: 0.95rem;
+            }
+
+            h1 {
+                font-size: 1.4rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <h1>Tutorial: Como acessar o Conecta com GOV.BR</h1>
+    <div class="container">
+        <h1>Tutorial: Como acessar o Conecta com GOV.BR</h1>
 
-    <p>
-        Assista ao vídeo abaixo para aprender como entrar no Conecta usando sua conta GOV.BR
-        e resolver dúvidas comuns como redefinir senha, verificação de segurança, entre outras.
-    </p>
+        <p>
+            Assista ao vídeo abaixo para aprender como entrar no Conecta usando sua conta GOV.BR
+            e resolver dúvidas comuns como redefinir senha, verificação de segurança, entre outras.
+        </p>
 
-    <video controls>
-        <source src="tutoriagov.mp4" type="video/mp4">
-        Seu navegador não suporta vídeos HTML5.
-    </video>
+        <video controls>
+            <source src="tutoriagov.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos HTML5.
+        </video>
+    </div>
 
 </body>
 </html>
