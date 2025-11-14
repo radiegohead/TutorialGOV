@@ -3,26 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutorial de Acesso ao Conecta</title>
+    <title>Tutoriais Conecta</title>
 
     <style>
-        /* Animação do gradiente de fundo */
+        /* Fundo animado */
         @keyframes gradientAnimation {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* Fundo com gradiente animado */
         body {
             margin: 0;
             padding: 0;
             background: linear-gradient(270deg, #fd7100, #001c56, #fd7100);
             background-size: 600% 600%;
             animation: gradientAnimation 15s ease infinite;
-            font-family: Arial, sans-serif;
-            color: #333;
 
+            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: flex-start;
@@ -31,7 +29,7 @@
             box-sizing: border-box;
         }
 
-        /* Container que segura o texto e vídeo */
+        /* Container */
         .container {
             width: 100%;
             max-width: 800px;
@@ -40,54 +38,117 @@
             padding: 20px;
             box-sizing: border-box;
             backdrop-filter: blur(5px);
+            display: none; /* escondido até ser ativado */
         }
 
-        h1 {
-            text-align: center;
-            margin-top: 0;
+        /* Tela inicial */
+        #home {
+            display: block; /* tela inicial aparece primeiro */
+        }
+
+        h1, h2 { text-align: center; }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background: #001c56;
+            color: white;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #fd7100;
         }
 
         /* Vídeo responsivo */
         video {
             width: 100%;
-            height: auto;
             border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        p { font-size: 1rem; line-height: 1.5; }
+
+        .back-btn {
+            background: #fd7100;
             margin-top: 20px;
-            background: #000;
+        }
+        .back-btn:hover {
+            background: #001c56;
         }
 
-        p {
-            font-size: 1rem;
-            line-height: 1.5;
-        }
-
-        /* Ajustes extras para telas menores */
-        @media (max-width: 480px) {
-            p {
-                font-size: 0.95rem;
-            }
-
-            h1 {
-                font-size: 1.4rem;
-            }
-        }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Tutorial: Como acessar o Conecta com GOV.BR</h1>
+    <!-- TELA INICIAL -->
+    <div class="container" id="home">
+        <h1>Tutoriais Conecta</h1>
+        <p>Escolha abaixo qual ajuda você precisa:</p>
 
+        <button onclick="openTutorial('t1')">1) Como acessar o Conecta com GOV.BR</button>
+        <button onclick="openTutorial('t2')">2) Esqueci minha senha GOV.BR</button>
+        <button onclick="openTutorial('t3')">3) Como criar uma conta GOV.BR</button>
+    </div>
+
+    <!-- TUTORIAL 1 -->
+    <div class="container" id="t1">
+        <h2>Como acessar o Conecta com GOV.BR</h2>
         <p>
-            Assista ao vídeo abaixo para aprender como entrar no Conecta usando sua conta GOV.BR
-            e resolver dúvidas comuns como redefinir senha, verificação de segurança, entre outras.
+            Para acessar o Conecta, você precisa ter o aplicativo GOV.BR instalado
+            e utilizar seu código de acesso para validar a entrada. No vídeo abaixo
+            você aprende o passo a passo completo.
         </p>
+        <video controls>
+            <source src="tutoriaconecta.mp4" type="video/mp4">
+        </video>
+        <button class="back-btn" onclick="goHome()">Voltar</button>
+    </div>
 
+    <!-- TUTORIAL 2 -->
+    <div class="container" id="t2">
+        <h2>Esqueci minha senha GOV.BR</h2>
+        <p>
+            Caso não lembre sua senha, a recuperação deve ser feita pelo aplicativo GOV.BR,
+            e não pelo Conecta. O vídeo abaixo mostra como redefinir sua senha de forma rápida.
+        </p>
         <video controls>
             <source src="tutoriagov.mp4" type="video/mp4">
-            Seu navegador não suporta vídeos HTML5.
         </video>
+        <button class="back-btn" onclick="goHome()">Voltar</button>
     </div>
+
+    <!-- TUTORIAL 3 -->
+    <div class="container" id="t3">
+        <h2>Como criar uma conta GOV.BR</h2>
+        <p>
+            Se você ainda não possui uma conta GOV.BR, o vídeo abaixo ensina como criar
+            uma nova conta de maneira simples e rápida.
+        </p>
+        <video controls>
+            <source src="tutoriacriargov.mp4" type="video/mp4">
+        </video>
+        <button class="back-btn" onclick="goHome()">Voltar</button>
+    </div>
+
+    <script>
+        function openTutorial(id) {
+            document.getElementById("home").style.display = "none";
+            document.getElementById("t1").style.display = "none";
+            document.getElementById("t2").style.display = "none";
+            document.getElementById("t3").style.display = "none";
+            
+            document.getElementById(id).style.display = "block";
+        }
+
+        function goHome() {
+            openTutorial("home");
+        }
+    </script>
 
 </body>
 </html>
